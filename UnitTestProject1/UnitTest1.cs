@@ -40,7 +40,7 @@ namespace UnitTestProject1
             NUnit.Framework.Assert.Multiple(() =>
                 {
                     NUnit.Framework.Assert.AreEqual(mouse.LocationRow,destinationRow);
-                   // NUnit.Framework.Assert.AreEqual(mouse.LocationColumn, destinationColumn);
+                    NUnit.Framework.Assert.AreEqual(mouse.LocationColumn, destinationColumn);
                     NUnit.Framework.CollectionAssert.AreEquivalent(testData.MazeSolvingDirections, mouse.directionsTakenByMouse);
                 });
             
