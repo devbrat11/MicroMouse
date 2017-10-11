@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{836ECC34-812A-48C2-B290-F10D8A4D518A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMouse.Library", "MicroMouse.Library\MicroMouse.Library.csproj", "{2C2E40FC-FC78-48FF-9528-C877EB894018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMouse.UI", "MicroMouse.UI\MicroMouse.UI.csproj", "{AEE41143-66D8-414E-B6B9-A13371C8BBE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMouse.Printer", "MicroMouse.Printer\MicroMouse.Printer.csproj", "{006E86A9-70FD-4108-A9EF-8BC466FCFF61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMouse.LibraryTests", "MicroMouse.TestInputs\MicroMouse.LibraryTests.csproj", "{DFD23A4A-8F74-4985-91E3-5D451F36B50E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{836ECC34-812A-48C2-B290-F10D8A4D518A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836ECC34-812A-48C2-B290-F10D8A4D518A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836ECC34-812A-48C2-B290-F10D8A4D518A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836ECC34-812A-48C2-B290-F10D8A4D518A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2E40FC-FC78-48FF-9528-C877EB894018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2E40FC-FC78-48FF-9528-C877EB894018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2E40FC-FC78-48FF-9528-C877EB894018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2E40FC-FC78-48FF-9528-C877EB894018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE41143-66D8-414E-B6B9-A13371C8BBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE41143-66D8-414E-B6B9-A13371C8BBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE41143-66D8-414E-B6B9-A13371C8BBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE41143-66D8-414E-B6B9-A13371C8BBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006E86A9-70FD-4108-A9EF-8BC466FCFF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006E86A9-70FD-4108-A9EF-8BC466FCFF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006E86A9-70FD-4108-A9EF-8BC466FCFF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006E86A9-70FD-4108-A9EF-8BC466FCFF61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD23A4A-8F74-4985-91E3-5D451F36B50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD23A4A-8F74-4985-91E3-5D451F36B50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD23A4A-8F74-4985-91E3-5D451F36B50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD23A4A-8F74-4985-91E3-5D451F36B50E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
