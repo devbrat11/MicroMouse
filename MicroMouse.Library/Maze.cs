@@ -16,7 +16,7 @@ namespace MicroMouse.Library
         public int InitialRowIndex { get; private set; }
         public int InitialColumnIndex { get; private set; }
         public int FinalRowIndex { get; private set; }
-        public int FinalColumIndex { get; private set; }
+        public int FinalColumnIndex { get; private set; }
 
         public Maze(int numberOfRows, int numberOfColumns,
             int startingRow, int startingColumn, int destinationRow, int destinationColumn,
@@ -29,7 +29,7 @@ namespace MicroMouse.Library
             InitialRowIndex = startingRow;
             InitialColumnIndex = startingColumn;
             FinalRowIndex = destinationColumn;
-            FinalColumIndex = destinationRow;
+            FinalColumnIndex = destinationRow;
 
             for (int i = 0; i < numberOfRows*2+1; i++)
             {
@@ -65,11 +65,10 @@ namespace MicroMouse.Library
 
         }
 
-        public bool AssertDestinationReached()
+        public void AssertDestinationReached()
         {
-            if (IsMazeSolved) return true;
-            else throw new Exception("You are completely lost");
-             
+            if (IsMazeSolved) return;
+            else throw new Exception("You are completely lost");    
         }
 
         public bool DoesWallExist(Direction direction)
@@ -83,7 +82,7 @@ namespace MicroMouse.Library
         {
             get
             {
-                if (currentColumnIndex == FinalRowIndex && currentRowIndex == FinalColumIndex) return true;
+                if (currentColumnIndex == FinalRowIndex && currentRowIndex == FinalColumnIndex) return true;
                 else return false;
             }
         }

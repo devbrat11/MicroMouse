@@ -11,7 +11,7 @@ namespace MicroMouse.Library
         Maze _maze;
         int[,] _floodValues;
         bool[,] _visitValues;
-        
+
         public List<Direction> directionsTakenByMouse = new List<Direction>();
         public event Action<Direction> Moved;
         public event Action SetCursorPosition;
@@ -27,12 +27,12 @@ namespace MicroMouse.Library
             _floodValues = new int[numberOfRows, numberOfColumns];
             _visitValues = new bool[numberOfRows, numberOfColumns];
 
-            for (int i = 0; i < 5;i++ )
+            for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
                     _visitValues[i, j] = false;
-                    _floodValues[i, j] = (maze.FinalRowIndex - i) + (maze.FinalColumIndex - j);
+                    _floodValues[i, j] = (maze.FinalRowIndex - i) + (maze.FinalColumnIndex - j);
                 }
             }
             LocationRow = maze.InitialRowIndex;
@@ -41,11 +41,11 @@ namespace MicroMouse.Library
 
         public void SolveMaze()
         {
-            while(LocationRow != _maze.FinalRowIndex||LocationColumn !=_maze.FinalColumIndex)
+            while (!IsDestinationReached())
             {
                 List<Direction> directions = new List<Direction> { Direction.North, Direction.East, Direction.South, Direction.West };
                 Dictionary<Direction, int> floodAndVisitValues = new Dictionary<Direction, int>();
-                
+
                 foreach (var direction in directions)
                 {
                     bool wallExists = _maze.DoesWallExist(direction);
@@ -63,7 +63,7 @@ namespace MicroMouse.Library
 
                 var sortedFloodValues = floodAndVisitValues.OrderBy(x => x.Value).ToList();
                 var directionToGo = sortedFloodValues.ElementAt(0).Key;
-                
+
                 if (GetCurrentCellFloodValue() <= GetFloodValueOfAdjacentCellInDirection(directionToGo))
                 {
                     _floodValues[LocationRow, LocationColumn] = GetFloodValueOfAdjacentCellInDirection(directionToGo) + 1;
@@ -84,7 +84,13 @@ namespace MicroMouse.Library
             _visitValues[LocationRow, LocationColumn] = true;
             _maze.Go(direction);
             directionsTakenByMouse.Add(direction);
-            if(Moved!=null) Moved(direction);
+            if (Moved != null) Moved(direction);
+        }
+
+        private bool IsDestinationReached()
+        {
+            if (LocationRow == _maze.FinalRowIndex && LocationColumn == _maze.FinalColumnIndex) return true;
+            else return false;
         }
 
         private bool DoesWallExist(Direction direction)
@@ -93,7 +99,7 @@ namespace MicroMouse.Library
         }
 
         private void GetCoorinatesofAdjacentCellInDirection(Direction direction, out int row, out int column)
-        { 
+        {
             var nextRowIndex = LocationRow;
             var nextColumnIndex = LocationColumn;
             if (direction == Direction.North) nextRowIndex = LocationRow - 1;
