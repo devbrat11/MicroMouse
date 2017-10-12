@@ -13,7 +13,7 @@ namespace MicroMouse.UI
     {
         static void Main(string[] args)
         {
-            TestData testData = TestData.TestMaze2();
+            TestData testData = TestData.TestMaze4();
             Object[,] mazeObjects = testData.MazeConstructionObjects;
             int numberOfRows = (mazeObjects.GetLength(0) - 1) / 2;
             int numberOfColumn = (mazeObjects.GetLength(1) - 1) / 2;

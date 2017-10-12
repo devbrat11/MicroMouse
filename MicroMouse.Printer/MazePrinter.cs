@@ -18,15 +18,16 @@ namespace MicroMouse.Printer
             _maze = maze;
             _directionsTakenByMouse = mouse.directionsTakenByMouse;
             _mouse.Moved += (direction) => PrintCurrentState();
-            _mouse.SetCursorPosition+=SetMazeSolvedStatusPosition;
+            _mouse.MazeSolved+=SetMazeSolvedStatusPosition;
         }
 
         public void PrintDirectionsTakenByMouseToReachDestination()
         {
             foreach(var direction in _directionsTakenByMouse)
             {
-                Console.WriteLine(direction);
+                Console.Write(direction+",");
             }
+            Console.WriteLine();
         }
 
         private void PrintCurrentState()

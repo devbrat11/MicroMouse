@@ -39,8 +39,7 @@ namespace UnitTestProject1
             mouse.SolveMaze();
             NUnit.Framework.Assert.Multiple(() =>
                 {
-                    NUnit.Framework.Assert.AreEqual(mouse.LocationRow,destinationRow);
-                    NUnit.Framework.Assert.AreEqual(mouse.LocationColumn, destinationColumn);
+                    NUnit.Framework.Assert.AreEqual(mouse.IsDestinationReached,true);
                     NUnit.Framework.CollectionAssert.AreEquivalent(testData.MazeSolvingDirections, mouse.directionsTakenByMouse);
                 });
             

@@ -14,7 +14,7 @@ namespace MicroMouse.Library
 
         public List<Direction> directionsTakenByMouse = new List<Direction>();
         public event Action<Direction> Moved;
-        public event Action SetCursorPosition;
+        public event Action MazeSolved;
 
         public int LocationRow { get; private set; }
         public int LocationColumn { get; private set; }
@@ -41,7 +41,7 @@ namespace MicroMouse.Library
 
         public void SolveMaze()
         {
-            while (!IsDestinationReached())
+            while (!IsDestinationReached)
             {
                 List<Direction> directions = new List<Direction> { Direction.North, Direction.East, Direction.South, Direction.West };
                 Dictionary<Direction, int> floodAndVisitValues = new Dictionary<Direction, int>();
@@ -71,8 +71,18 @@ namespace MicroMouse.Library
 
                 Go(directionToGo);
             }
-            if (SetCursorPosition != null) SetCursorPosition();
+            if (MazeSolved != null) MazeSolved();
             _maze.AssertDestinationReached();
+        }
+
+        public bool IsDestinationReached
+        {
+            get
+            {
+                if (LocationRow == _maze.FinalRowIndex && LocationColumn == _maze.FinalColumnIndex) return true;
+                else return false;
+            }
+
         }
 
         private void Go(Direction direction)
@@ -85,12 +95,6 @@ namespace MicroMouse.Library
             _maze.Go(direction);
             directionsTakenByMouse.Add(direction);
             if (Moved != null) Moved(direction);
-        }
-
-        private bool IsDestinationReached()
-        {
-            if (LocationRow == _maze.FinalRowIndex && LocationColumn == _maze.FinalColumnIndex) return true;
-            else return false;
         }
 
         private bool DoesWallExist(Direction direction)
