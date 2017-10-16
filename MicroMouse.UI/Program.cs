@@ -22,22 +22,22 @@ namespace MicroMouse.UI
             int destinationRow = testData.DestinationRow;
             int destinationColumn = testData.DestinationColumn;
             
-            Maze maze = new Maze(numberOfRows, numberOfColumn, startingRow,
-                startingColumn, destinationRow, destinationColumn, mazeObjects);
-            Mouse mouse = new Mouse(maze);
-            var printer = new MazePrinter(mouse, maze);
-            
             try
             {
+                Maze maze = new Maze(numberOfRows, numberOfColumn, startingRow,
+                    startingColumn, destinationRow, destinationColumn, mazeObjects);
+                Mouse mouse = new Mouse(maze);
+                var printer = new MazePrinter(mouse, maze);
                 mouse.SolveMaze();
                 Console.WriteLine("You have succeeded!");
+                printer.PrintDirectionsTakenByMouseToReachDestination();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("You have failed!");
             }
-            printer.PrintDirectionsTakenByMouseToReachDestination();
+            
         }
     }
 }
