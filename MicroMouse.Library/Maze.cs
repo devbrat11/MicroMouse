@@ -9,7 +9,7 @@ namespace MicroMouse.Library
     public class Maze
     {
         public Object[,] objects;
-        Cell[,] cells ;
+        Cell[,] cells;
         int currentRowIndex;
         int currentColumnIndex;
 
@@ -24,16 +24,34 @@ namespace MicroMouse.Library
         {
             objects = mazeObjects;
             cells = new Cell[numberOfRows, numberOfColumns];
-            currentRowIndex = startingRow;
-            currentColumnIndex = startingColumn;
-            InitialRowIndex = startingRow;
-            InitialColumnIndex = startingColumn;
-            FinalRowIndex = destinationColumn;
-            FinalColumnIndex = destinationRow;
-
-            for (int i = 0; i < numberOfRows*2+1; i++)
+            if (startingRow > -1 && startingRow < numberOfRows )
             {
-                for (int j = 0; j < numberOfColumns*2+1; j++)
+                currentRowIndex = startingRow;
+                InitialRowIndex = startingRow;
+            }
+            else
+                throw new ArgumentOutOfRangeException("Starting Row Index is not within the range of the board");
+            
+            if(startingColumn>-1&&startingColumn<numberOfColumns)
+            {
+
+                currentColumnIndex = startingColumn;
+                InitialColumnIndex = startingColumn;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Starting Column Index is not within the range of the board");
+            }
+
+            if (destinationColumn > -1 && destinationColumn < numberOfColumns) FinalRowIndex = destinationColumn;
+            else throw new ArgumentOutOfRangeException("Destination Column Index is not within the range of the board");
+
+            if (destinationRow > -1 && destinationRow < numberOfColumns) FinalColumnIndex = destinationRow;
+            else throw  new ArgumentOutOfRangeException("Destination Row Index is not within the range of the board");
+            
+            for (int i = 0; i < numberOfRows * 2 + 1; i++)
+            {
+                for (int j = 0; j < numberOfColumns * 2 + 1; j++)
                 {
                     if (objects[i, j] is Space || objects[i, j] == null)
                     {
@@ -50,7 +68,7 @@ namespace MicroMouse.Library
 
         public void Go(Direction direction)
         {
-            
+
             if (cells[currentRowIndex, currentColumnIndex].IsWallOpen(direction))
             {
                 if (direction == Direction.North) currentRowIndex--;
@@ -68,7 +86,7 @@ namespace MicroMouse.Library
         public void AssertDestinationReached()
         {
             if (IsMazeSolved) return;
-            else throw new Exception("You are completely lost");    
+            else throw new Exception("You are completely lost");
         }
 
         public bool DoesWallExist(Direction direction)
